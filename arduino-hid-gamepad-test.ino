@@ -109,8 +109,8 @@ void loop() {
     }
 
     // analog axes
-    Gamepad.xAxis(map(analogRead(pinLXAxis), 70, 325, -32767, 32767));
-    Gamepad.yAxis(map(analogRead(pinLYAxis), 45, 315, 32767, -32767)); // flip Y axis because I have it oriented upside-down
+    Gamepad.xAxis(map(analogRead(pinLXAxis), 200, 880, -32767, 32767));
+    Gamepad.yAxis(map(analogRead(pinLYAxis), 130, 850, 32767, -32767)); // flip Y axis because I have it oriented upside-down
 
     Gamepad.write();
   }
