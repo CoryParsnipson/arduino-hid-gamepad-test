@@ -109,8 +109,18 @@ void loop() {
     }
 
     // analog axes
-    Gamepad.xAxis(map(analogRead(pinLXAxis), 200, 880, -32767, 32767));
-    Gamepad.yAxis(map(analogRead(pinLYAxis), 130, 850, 32767, -32767)); // flip Y axis because I have it oriented upside-down
+    int readX = analogRead(pinLXAxis); // store in temporary variables to use in constrain()
+    int readY = analogRead(pinLYAxis);
+
+    const int XMIN = 200, XMAX = 880;
+    const int YMIN = 125, YMAX = 835;
+
+    // clamp values to observed joystick values
+    readX = constrain(readX, XMIN, XMAX);
+    readY = constrain(readY, YMIN, YMAX);
+    
+    Gamepad.xAxis(map(readX, XMIN, XMAX, -32767, 32767)); 
+    Gamepad.yAxis(map(readY, YMIN, YMAX, 32767, -32767)); // flip Y axis because I have it oriented upside-down
 
     Gamepad.write();
   }
