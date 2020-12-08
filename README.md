@@ -28,12 +28,10 @@ https://www.amazon.com/gp/product/B0191ELDL0/ref=ppx\_yo\_dt\_b\_asin\_title\_o0
 ##  Nintendo Switch Thumbstick
 
 It is important to note that the Switch thumbstick is designed to work with 1.8V apparently (see
-the Nintendo Switch Reverse Engineering git repo above). Using the wrong voltage will result in
-the joystick being "lopsided". That is, one direction of an axis will have a bigger range than 
-the opposite direction (e.g. x minus direction has a delta of 200 while x plus direction has a delta
-of 10000).
+the Nintendo Switch Reverse Engineering git repo above). The thumbstick can also work perfectly fine
+at 5V as well, with the only difference being that the potentiometer values assume a larger range.
 
-The raw range of the thumbstick appears to be:
+At 1.75V, the raw range of the thumbstick appears to be:
 
 x axis -> min: 80, max: 315
 y axis -> min: 50, max: 303
@@ -43,3 +41,12 @@ joystick output signal is noisy. About 5- 10 in both directions was good:
 
 x axis -> min: 70, max: 325
 y axis -> min: 45, max: 315
+
+At 5V, the raw range of the thumbstick appears to be:
+
+x axis -> min: 195, max: 835
+y axis -> min: 215, max: 800
+
+Also note: these thumbsticks are very noisy so they may fluctuate quickly around the values above
+and somewhat inconsistent. I think what happens is that the ranges may change slightly at
+different points of wear and tear, so it would be good to write code to prepare for that.
