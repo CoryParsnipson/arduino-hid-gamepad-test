@@ -27,9 +27,9 @@ https://www.amazon.com/gp/product/B0191ELDL0/ref=ppx\_yo\_dt\_b\_asin\_title\_o0
 
 ##  Nintendo Switch Thumbstick
 
-It is important to note that the Switch thumbstick is designed to work with 1.8V apparently (see
-the Nintendo Switch Reverse Engineering git repo above). The thumbstick can also work perfectly fine
-at 5V as well, with the only difference being that the potentiometer values assume a larger range.
+The Switch thumbstick appears to be designed to work with 1.8V (see the Nintendo Switch Reverse
+Engineering git repo above). The thumbstick can also work perfectly fine at 5V as well, with
+the only difference being that the potentiometer values assume a larger range.
 
 At 1.75V, the raw range of the thumbstick appears to be:
 
