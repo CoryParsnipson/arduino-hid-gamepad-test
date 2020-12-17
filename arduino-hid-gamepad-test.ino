@@ -39,7 +39,7 @@ void setup() {
   pinMode(pinA, INPUT_PULLUP);
   pinMode(pinB, INPUT_PULLUP);
 
-  pinMode(pinL3, INPUT);
+  pinMode(pinL3, INPUT_PULLUP);
   digitalWrite(pinL3, HIGH);
   
   pinMode(pinMeta, INPUT_PULLUP);
@@ -62,13 +62,6 @@ void setup() {
   digitalWrite(pinLYAxis, LOW);
 
   Gamepad.begin();
-}
-
-bool isPullup(int pinId) {
-  if (pinId == pinL3 || pinId == pinR3) {
-    return false;
-  }
-  return true;
 }
 
 bool getPressed(int idx) {
@@ -94,18 +87,15 @@ void loop() {
   for (int idx = 0; idx < NUM_BUTTONS; ++idx) {
     int button = idx + 1;
     int pinIsHigh = digitalRead(idx2Pin[idx]);
-    if (!isPullup(idx2Pin[idx])) {
-      pinIsHigh = !pinIsHigh;
-    }
 
     if (pinIsHigh) {
+      setPressed(button, false);
+      Gamepad.release(button);
+    } else {
       if (!getPressed(button)) {
         setPressed(button, true);
         Gamepad.press(button);
       }
-    } else {
-      setPressed(button, false);
-      Gamepad.release(button);
     }
 
     // analog axes
